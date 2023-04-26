@@ -1,26 +1,39 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-void shellSort(int arr[], int n) {
-    for (int gap = n / 2; gap > 0; gap /= 2) {
-        for (int i = gap; i < n; i++) {
-            int temp = arr[i];
-            int j;
-            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
-                arr[j] = arr[j - gap];
-            }
-            arr[j] = temp;
-        }
+void printArr(int a[], int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        cout << a[i] << " ";
     }
+    cout << "\n";
 }
 
-int main() {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    shellSort(arr, n);
-    cout << "Sorted array: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-    return 0;
+void shellSort(int a[], int n)
+{
+    for (int interval = n / 2; interval > 0; interval /= 2 )
+    {
+        for (int i = interval; i < n; ++i)
+        {
+            int temp = a[i];
+            int j = i;          // j = i-1
+
+            //while (j >= 0 && temp < a[j])
+            while ( j >= interval && temp < a[j - interval])
+            {
+                a[j] = a[j - interval]; //a[j+1] = a[j]
+                j -= interval; // j -= 1
+            }
+            a[j] = temp; // a[j+1] = temp
+        }
+    }
+
+    printArr(a, n);
+}
+
+int main()
+{
+    int a[9] = {4, 3, 5, 6, 7, 8, 9, 1, 2};
+    shellSort(a, 9);
 }

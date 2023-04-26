@@ -1,25 +1,38 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-void insertionSort(int arr[], int n) {
-    for (int i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
+void printArr(int a[], int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        cout << a[i] << " ";
     }
+    cout << "\n";
 }
 
-int main() {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    insertionSort(arr, n);
-    cout << "Sorted array: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-    return 0;
+void insertionSort(int a[], int size)
+{
+    for (int i = 1; i < size; ++i)
+    {
+        int temp = a[i];
+        int j = i - 1;
+
+        while (temp < a[j] && j >= 0)
+        {
+            a[j + 1] = a[j];
+            --j;
+        }
+
+        a[j + 1] = temp;
+    }
+
+    printArr(a, size);
+}
+
+
+int main()
+{
+    int a[9] = {4, 3, 5, 6, 7, 8, 9, 1, 2};
+    insertionSort(a, 9);
+
 }
