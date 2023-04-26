@@ -20,7 +20,7 @@ void shellSort(int a[], int n)
             int j = i;          // j = i-1
 
             //while (j >= 0 && temp < a[j])
-            while ( j >= interval && temp < a[j - interval])
+            while ( j - interval >= 0 && a[j - interval] > temp)
             {
                 a[j] = a[j - interval]; //a[j+1] = a[j]
                 j -= interval; // j -= 1
